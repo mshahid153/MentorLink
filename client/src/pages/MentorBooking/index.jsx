@@ -41,6 +41,7 @@ const MentorBooking = () => {
   const [filteredMentors, setFilteredMentors] = useState([]);
   const [isMentorResultVisible, setIsMentorResultVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -59,6 +60,7 @@ const MentorBooking = () => {
       setFilteredMentors(response.data);
       setIsMentorResultVisible(true);
     } catch (error) {
+      setError("Failed to fetch mentor data. Please try again later.");
       console.error("Error fetching mentors:", error);
     } finally {
       setIsLoading(false);
@@ -71,6 +73,14 @@ const MentorBooking = () => {
 
   const renderMentor = () => {
     if (isLoading) return <Loading />;
+    if (error)
+      return (
+        <div className="w-full h-[80vh] flex justify-center items-center">
+          <div className="m-5 border-2 border-red-500 rounded-md shadow-lg shadow-red-500 p-5 text-2xl text-red-500">
+            Sorry, {error}
+          </div>
+        </div>
+      );
 
     return (
       <div className="w-[90%]  p-5 flex flex-wrap gap-5 justify-center md:mt-12 md:h-[80vh] overflow-y-auto">

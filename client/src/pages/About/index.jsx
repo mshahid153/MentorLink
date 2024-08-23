@@ -16,7 +16,7 @@ const About = () => {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="flex flex-col md:flex-row md:gap-5 justify-center md:items-center h-[80vh]">
+    <div className="flex flex-col md:flex-row md:gap-5 justify-center md:items-center md:h-[80vh] mb-10">
       <div className="m-5 md:p-5 ">
         <img src={AboutUsPageImage} className="w-full" />
       </div>

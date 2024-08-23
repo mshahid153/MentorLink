@@ -17,9 +17,12 @@ app.get("/", (req, res) => {
 app.get("/mentor", async (req, res) => {
   const field = req.query.field;
   try {
-    const mentor = await getMentorByArea(field);
-    console.log(mentor);
-    res.send(mentor);
+    const mentors = await getMentorByArea(field);
+    if (mentors) {
+      res.json(mentors);
+    } else {
+      res.status(404).json({ message: "Mentors not found" });
+    }
   } catch (error) {
     console.error("Error fetching mentors:", error);
     res.status(500).json({ error: "Internal Server Error" });

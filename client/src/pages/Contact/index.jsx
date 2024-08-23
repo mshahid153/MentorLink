@@ -15,6 +15,13 @@ import Loading from "@/components/loading";
 import { useEffect, useState } from "react";
 
 const Contact = () => {
+  const [contactForm, setContactForm] = useState({
+    name: "",
+    number: "",
+    email: "",
+    message: "",
+  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -25,7 +32,28 @@ const Contact = () => {
     };
   }, []);
 
+  const handleSubmit = () => {
+    const { name, number, email, message } = contactForm;
+    if (name && number && email && message) {
+      setIsSubmitted(true);
+      setContactForm({
+        name: "",
+        number: "",
+        email: "",
+        message: "",
+      });
+    }
+  };
+
   if (isLoading) return <Loading />;
+  if (isSubmitted)
+    return (
+      <div className="w-full h-[80vh] flex justify-center items-center">
+        <div className="m-5 border-2 border-blue-500 rounded-md shadow-lg shadow-blue-500 p-5 text-2xl text-blue-500">
+          Message sent successfully...
+        </div>
+      </div>
+    );
 
   return (
     <div className="flex flex-col md:flex-row gap-10 justify-center m-5 mb-10 md:m-16">
@@ -54,6 +82,12 @@ const Contact = () => {
                   placeholder="Full Name"
                   type="text"
                   className=" focus-visible:ring-[#1451EE]"
+                  onChange={(e) =>
+                    setContactForm((prevValues) => ({
+                      ...prevValues,
+                      name: e.target.value,
+                    }))
+                  }
                 />
               </div>
               <div className="flex flex-col space-y-1.5 w-full">
@@ -61,8 +95,14 @@ const Contact = () => {
                 <Input
                   id="number"
                   placeholder="Phone Number"
-                  type="number"
+                  type="tel"
                   className=" focus-visible:ring-[#1451EE]"
+                  onChange={(e) =>
+                    setContactForm((prevValues) => ({
+                      ...prevValues,
+                      number: e.target.value,
+                    }))
+                  }
                 />
               </div>
             </div>
@@ -73,6 +113,12 @@ const Contact = () => {
                 placeholder=" Email"
                 type="email"
                 className=" focus-visible:ring-[#1451EE]"
+                onChange={(e) =>
+                  setContactForm((prevValues) => ({
+                    ...prevValues,
+                    email: e.target.value,
+                  }))
+                }
               />
             </div>
             <div className="flex flex-col space-y-1.5">
@@ -81,11 +127,22 @@ const Contact = () => {
                 id="message"
                 placeholder=" Message"
                 className=" focus-visible:ring-[#1451EE] resize-none"
+                onChange={(e) =>
+                  setContactForm((prevValues) => ({
+                    ...prevValues,
+                    message: e.target.value,
+                  }))
+                }
               />
             </div>
           </CardContent>
           <CardFooter>
-            <Button className="bg-[#007CFF] hover:bg-[#1451EE]">Submit</Button>
+            <Button
+              className="bg-[#007CFF] hover:bg-[#1451EE]"
+              onClick={handleSubmit}
+            >
+              Submit
+            </Button>
           </CardFooter>
         </Card>
       </div>

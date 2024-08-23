@@ -111,7 +111,7 @@ const MentorBooking = () => {
     <div className="w-full flex items-center flex-col md:flex-row">
       <div className=" m-8 md:ml-20 ">
         <Card
-          className={`w-full border-2 shadow-lg ${
+          className={`md:w-[400px] border-2 shadow-lg ${
             formEmpty
               ? "border-red-500 shadow-red-500"
               : "border-[#1451EE] shadow-blue-300"

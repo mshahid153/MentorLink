@@ -1,7 +1,7 @@
 import { BrowserRouter, Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Home from "@/pages/Home";
-import Header from "@/components/Header";
+import Header from "@/components/header";
 import MentorBooking from "@/pages/MentorBooking";
 import MentorDetails from "@/pages/MentorDetails";
 import Billing from "@/pages/Billing";

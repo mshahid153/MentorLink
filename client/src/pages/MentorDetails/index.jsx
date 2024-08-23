@@ -70,7 +70,7 @@ const MentorDetails = () => {
           </p>
           <p>
             <span className="font-semibold">Experience : </span>
-            {mentorInfo.experience}
+            {mentorInfo.experience} Years
           </p>
           <div className="flex items-center">
             <span className="font-semibold">Rating : </span>

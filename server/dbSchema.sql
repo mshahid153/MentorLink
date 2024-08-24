@@ -1,7 +1,7 @@
 CREATE DATABASE mentor_details;
 USE mentor_details;
 
-CREATE TABLE mentor (
+CREATE TABLE mentors (
     id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(255) NOT NULL,
     availability VARCHAR(255) NOT NULL,

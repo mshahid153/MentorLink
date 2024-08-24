@@ -56,14 +56,11 @@ const Contact = () => {
     );
 
   return (
-    <div className="flex flex-col md:flex-row gap-10 justify-center m-5 mb-10 md:m-16">
-      <div className="w-[90vw] flex justify-center items-center">
-        <img
-          src={ContactPageImage}
-          className="w-[90%] md:h-[500px] object-contain"
-        />
+    <div className="flex flex-col md:flex-row  justify-center m-5 mb-10 md:m-16">
+      <div className="wm-5 md:p-5 md:w-1/2 flex justify-center ">
+        <img src={ContactPageImage} className="h-[450px] object-contain" />
       </div>
-      <div className="flex flex-col items-center gap-5 w-full">
+      <div className="flex flex-col items-center gap-5 md:w-1/2">
         <Card className="max-w-[500px] md:border-2 border-[#0048ff] shadow-lg shadow-blue-300">
           <CardHeader>
             <CardTitle className="text-[#1451EE] underline underline-offset-8 pb-3">

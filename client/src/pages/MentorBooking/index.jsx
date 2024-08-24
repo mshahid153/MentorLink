@@ -58,11 +58,11 @@ const MentorBooking = () => {
         params: { field: selectedField },
       });
       setFilteredMentors(response.data);
-      setIsMentorResultVisible(true);
     } catch (error) {
       setError("Failed to fetch mentor data. Please try again later.");
       console.error("Error fetching mentors:", error);
     } finally {
+      setIsMentorResultVisible(true);
       setIsLoading(false);
     }
   };
@@ -75,7 +75,7 @@ const MentorBooking = () => {
     if (isLoading) return <Loading />;
     if (error)
       return (
-        <div className="w-full h-[80vh] flex justify-center items-center">
+        <div className="w-full md:h-[80vh] flex justify-center items-center">
           <div className="m-5 border-2 border-red-500 rounded-md shadow-lg shadow-red-500 p-5 text-2xl text-red-500">
             Sorry, {error}
           </div>
@@ -83,7 +83,7 @@ const MentorBooking = () => {
       );
 
     return (
-      <div className="w-[90%]  p-5 flex flex-wrap gap-5 justify-center md:mt-12 md:h-[80vh] overflow-y-auto">
+      <div className="w-[90%] p-5 flex flex-wrap gap-5 justify-center md:pt-10 md:h-[80vh] overflow-y-auto">
         {filteredMentors.map((mentor) => (
           <div
             key={mentor.id}
@@ -118,8 +118,8 @@ const MentorBooking = () => {
   };
 
   return (
-    <div className="w-full flex items-center flex-col md:flex-row">
-      <div className=" m-8 md:ml-20 ">
+    <div className="w-full flex items-center flex-col md:flex-row mb-5">
+      <div className=" m-8 lg:ml-20">
         <Card
           className={`md:w-[400px] border-2 shadow-lg ${
             formEmpty
@@ -148,7 +148,7 @@ const MentorBooking = () => {
                   />
                 </div>
                 <div className="flex flex-col space-y-1.5">
-                  <Label htmlFor="field">Select your field</Label>
+                  <Label htmlFor="field">Select your Interest</Label>
                   <Popover open={isOptionOpen} onOpenChange={setIsOptionOpen}>
                     <PopoverTrigger asChild>
                       <Button
@@ -157,15 +157,15 @@ const MentorBooking = () => {
                         aria-expanded={isOptionOpen}
                         className="w-full justify-between"
                       >
-                        {selectedField || "Select a field..."}
+                        {selectedField || "Select a role..."}
                         <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
                       </Button>
                     </PopoverTrigger>
                     <PopoverContent className="p-0 w-full">
                       <Command>
-                        <CommandInput placeholder="Search field..." />
+                        <CommandInput placeholder="Search role..." />
                         <CommandList>
-                          <CommandEmpty>No field found.</CommandEmpty>
+                          <CommandEmpty>No role found.</CommandEmpty>
                           <CommandGroup>
                             {fields.map((field) => (
                               <CommandItem
@@ -202,7 +202,7 @@ const MentorBooking = () => {
                 className="bg-[#007CFF] hover:bg-[#1451EE] mt-5"
                 type="submit"
               >
-                Book Mentor
+                Search Mentor
               </Button>
             </form>
           </CardContent>
@@ -217,7 +217,7 @@ const MentorBooking = () => {
           <img
             src={ScheduleImage}
             alt="bookingpage image"
-            className="h-[300px] md:h-[640px] object-contain"
+            className="h-[300px] md:h-[80vh] object-contain"
           />
         </div>
       ) : (

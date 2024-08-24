@@ -16,11 +16,11 @@ const About = () => {
   if (isLoading) return <Loading />;
 
   return (
-    <div className="flex flex-col md:flex-row md:gap-5 justify-center md:items-center md:h-[80vh] mb-10">
-      <div className="m-5 md:p-5 ">
-        <img src={AboutUsPageImage} className="w-full" />
+    <div className="flex flex-col md:flex-row  justify-center md:items-center md:h-[80vh] mb-10">
+      <div className="m-5 md:p-5 md:w-1/2 flex justify-center ">
+        <img src={AboutUsPageImage} className="w-[500px]" />
       </div>
-      <div className="flex justify-center flex-col gap-5 mx-5 ">
+      <div className="flex justify-center flex-col gap-5 mx-5 md:w-1/2">
         <h1 className="text-[#1451EE] text-2xl underline underline-offset-8 font-semibold">
           About Us
         </h1>

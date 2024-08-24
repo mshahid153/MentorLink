@@ -244,7 +244,7 @@ const Billing = () => {
                 Confirm your details
               </AlertDialogTitle>
               <AlertDialogDescription></AlertDialogDescription>
-              <div className="text-xl">
+              <div className="text-xl text-left">
                 <h1>{`First Name : ${billingDetails.firstName}`}</h1>
                 <h1>{`Last Name : ${billingDetails.lastName}`}</h1>
                 <h1>{`Number  : ${billingDetails.number}`}</h1>
